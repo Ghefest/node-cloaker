@@ -3,6 +3,7 @@ const geoip = require('geoip-lite');
 module.exports = class DetectService {
   static isWhiteCountry(ip) {
     console.log(DetectService.getCountry(ip));
+    console.log(process.env.WHITE_LIST_COUNTRIES);
 
     return DetectService.getCountry(ip) === process.env.WHITE_LIST_COUNTRIES;
   }

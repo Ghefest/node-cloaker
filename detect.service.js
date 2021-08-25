@@ -4,6 +4,7 @@ module.exports = class DetectService {
   constructor() {
     this.ip = '';
     this.referer = '';
+    this.useragent = {};
     this.whiteListCountries = process.env.WHITE_LIST_COUNTRIES.split(' ');
   }
 
@@ -41,8 +42,10 @@ module.exports = class DetectService {
   redirectFlow(req, res, next) {
     this.ip = req.connection.remoteAddress;
     this.referer = req.get('Referrer');
+    this.useragent = req.useragent;
 
     console.log('Referer:', this.referer);
+    console.log('UserAgent:', this.useragent);
 
     const isWhite = this.isWhite();
     console.log('Redirect to white?:', isWhite);

@@ -5,7 +5,7 @@ module.exports = class DetectService {
     this.ip = '';
   }
 
-  isWhiteCountry() {
+  isWhiteListCountry() {
     console.log(this.getCountry(), 'Remote country');
     console.log(process.env.WHITE_LIST_COUNTRIES, 'White list');
 
@@ -13,7 +13,7 @@ module.exports = class DetectService {
   }
 
   isWhite() {
-    return this.isWhiteCountry();
+    return !this.isWhiteListCountry();
   }
 
   getCountry() {

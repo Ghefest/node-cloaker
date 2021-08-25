@@ -4,15 +4,16 @@ module.exports = class DetectService {
   constructor() {
     this.ip = '';
     this.referer = '';
+    this.whiteListCountries = process.env.WHITE_LIST_COUNTRIES.split(' ');
   }
 
   checkReferer() {}
 
   isWhiteListCountry() {
     console.log(this.getCountry(), 'Remote country');
-    console.log(process.env.WHITE_LIST_COUNTRIES, 'White list');
+    console.log(this.whiteListCountries, 'White list');
 
-    return this.getCountry() === process.env.WHITE_LIST_COUNTRIES;
+    return this.whiteListCountries.includes(this.getCountry());
   }
 
   getCountry() {

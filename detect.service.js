@@ -1,25 +1,29 @@
 const geoip = require('geoip-lite');
 
 module.exports = class DetectService {
-  static isWhiteCountry(ip) {
-    console.log(DetectService.getCountry(ip), 'Remote country');
+  constructor() {
+    this.ip = '';
+  }
+
+  isWhiteCountry() {
+    console.log(this.getCountry(), 'Remote country');
     console.log(process.env.WHITE_LIST_COUNTRIES, 'White list');
 
-    return DetectService.getCountry(ip) === process.env.WHITE_LIST_COUNTRIES;
+    return this.getCountry() === process.env.WHITE_LIST_COUNTRIES;
   }
 
-  static isWhite(ip) {
-    return DetectService.isWhiteCountry(ip);
+  isWhite() {
+    return this.isWhiteCountry();
   }
 
-  static getCountry(ip) {
-    if (ip.includes('::ffff:')) {
-      ip = ip.split(':').reverse()[0];
+  getCountry() {
+    if (this.ip.includes('::ffff:')) {
+      this.ip = this.ip.split(':').reverse()[0];
     }
 
-    const lookedUpIP = geoip.lookup(ip);
+    const lookedUpIP = geoip.lookup(this.ip);
 
-    if (ip === '127.0.0.1' || ip === '::1') {
+    if (this.ip === '127.0.0.1' || this.ip === '::1') {
       return { error: "This won't work on localhost" };
     }
 
@@ -30,10 +34,10 @@ module.exports = class DetectService {
     return lookedUpIP.country;
   }
 
-  static redirectFlow(req, res, next) {
-    const ip = req.connection.remoteAddress;
-    const isWhite = DetectService.isWhite(ip);
+  redirectFlow(req, res, next) {
+    this.ip = req.connection.remoteAddress;
 
+    const isWhite = this.isWhite();
     console.log(isWhite);
 
     isWhite ? (req.url = `/white/${req.url}`) : (req.url = `/black/${req.url}`);

@@ -1,18 +1,23 @@
 const geoip = require('geoip-lite');
 
 module.exports = class DetectService {
-  static isWhite() {
-    return false;
+  static isWhiteCountry(ip) {
+    console.log(DetectService.getCountry(ip));
+
+    return DetectService.getCountry(ip) === process.env.WHITE_LIST_COUNTRIES;
   }
 
-  static getIpInfo(ip) {
+  static isWhite(ip) {
+    return DetectService.isWhiteCountry(ip);
+  }
+
+  static getCountry(ip) {
     if (ip.includes('::ffff:')) {
       ip = ip.split(':').reverse()[0];
     }
 
-    console.log(ip);
-
     const lookedUpIP = geoip.lookup(ip);
+
     if (ip === '127.0.0.1' || ip === '::1') {
       return { error: "This won't work on localhost" };
     }
@@ -21,12 +26,16 @@ module.exports = class DetectService {
       return { error: 'Error occured while trying to process the information' };
     }
 
-    return lookedUpIP;
+    return lookedUpIP.country;
   }
 
   static redirectFlow(req, res, next) {
-    console.log(DetectService.getIpInfo(req.connection.remoteAddress));
-    if (DetectService.isWhite()) {
+    const ip = req.connection.remoteAddress;
+    const isWhite = DetectService.isWhite(ip);
+
+    console.log(isWhite);
+
+    if (isWhite) {
       req.url = `/white/${req.url}`;
     } else {
       req.url = `/black/${req.url}`;

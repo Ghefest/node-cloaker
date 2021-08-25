@@ -45,7 +45,7 @@ module.exports = class DetectService {
     console.log('Referer:', this.referer);
 
     const isWhite = this.isWhite();
-    console.log(isWhite);
+    console.log('Redirect to white?:', isWhite);
 
     isWhite ? (req.url = `/white/${req.url}`) : (req.url = `/black/${req.url}`);
 

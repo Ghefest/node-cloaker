@@ -39,7 +39,7 @@ module.exports = class DetectService {
 
   redirectFlow(req, res, next) {
     this.ip = req.connection.remoteAddress;
-    this.referer = req.headers.referer;
+    this.referer = req.get('Referrer');
 
     console.log('Referer:', this.referer);
 

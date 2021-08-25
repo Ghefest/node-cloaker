@@ -10,6 +10,8 @@ module.exports = class DetectService {
       ip = ip.split(':').reverse()[0];
     }
 
+    console.log(ip);
+
     const lookedUpIP = geoip.lookup(ip);
     if (ip === '127.0.0.1' || ip === '::1') {
       return { error: "This won't work on localhost" };

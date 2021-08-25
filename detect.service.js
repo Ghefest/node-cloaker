@@ -36,11 +36,7 @@ module.exports = class DetectService {
 
     console.log(isWhite);
 
-    if (isWhite) {
-      req.url = `/white/${req.url}`;
-    } else {
-      req.url = `/black/${req.url}`;
-    }
+    isWhite ? (req.url = `/white/${req.url}`) : (req.url = `/black/${req.url}`);
 
     next();
   }

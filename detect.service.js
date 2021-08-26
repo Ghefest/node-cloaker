@@ -23,8 +23,8 @@ module.exports = class DetectService {
   }
 
   validatePlatform() {
-    console.log('White list platforms:', this.whiteListPlatforms);
     console.log('Remote platform:', this.useragent.platform);
+    console.log('White list platforms:', this.whiteListPlatforms);
 
     return this.whiteListPlatforms.includes(this.useragent.platform);
   }

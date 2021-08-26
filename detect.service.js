@@ -53,10 +53,10 @@ module.exports = class DetectService {
 
   isWhite() {
     return (
-      !this.validateCountries() &&
-      !this.validatePlatform() &&
+      !this.checkIsFacebook() &&
       !this.checkIsBot() &&
-      !this.checkIsFacebook()
+      !this.validatePlatform() &&
+      !this.validateCountries()
     );
   }
 

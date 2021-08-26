@@ -16,7 +16,7 @@
    ```
 
 5. Configure .env file
-6. Upload your static file to black & white folders
+6. Upload your static files to black & white folders
 
 7. Install PM2 and start project:
    ```bash

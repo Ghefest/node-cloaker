@@ -5,14 +5,24 @@ module.exports = class DetectService {
     this.ip = '';
     this.referer = '';
     this.useragent = {};
+
     this.whiteListCountries = process.env.WHITE_LIST_COUNTRIES.split(' ');
+    this.whiteListPlatforms = process.env.WHITE_LIST_PLATFORMS.split(',');
   }
 
-  checkReferer() {}
+  checkIsBot() {
+    return this.useragent.isBot;
+  }
 
-  isWhiteListCountry() {
-    console.log(this.getCountry(), 'Remote country');
-    console.log(this.whiteListCountries, 'White list');
+  validatePlatform() {
+    return this.whiteListPlatforms.includes(this.useragent.platform);
+  }
+
+  validateReferer() {}
+
+  validateCountries() {
+    console.log('Remote country:', this.getCountry());
+    console.log('White list countries:', this.whiteListCountries);
 
     return this.whiteListCountries.includes(this.getCountry());
   }
@@ -36,7 +46,13 @@ module.exports = class DetectService {
   }
 
   isWhite() {
-    return !this.isWhiteListCountry();
+    console.log(this.useragent.geoIp);
+
+    return (
+      !this.validateCountries() &&
+      !this.validatePlatform() &&
+      !this.checkIsBot()
+    );
   }
 
   redirectFlow(req, res, next) {

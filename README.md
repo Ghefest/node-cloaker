@@ -2,7 +2,7 @@
 
 ## Deploy
 
-1. Install NodeJS [Manual installing via package manager](https://nodejs.org/en/download/package-manager/)
+1. Install NodeJS ([Manual installing via package manager](https://nodejs.org/en/download/package-manager/))
 2. ```bash
    cd /var/www/
    ```
@@ -22,8 +22,6 @@
    ```bash
    npm install pm2@latest -g
    ```
-
-````
- ```bash
- pm2 start server.js
-````
+   ```bash
+   pm2 start server.js
+   ```

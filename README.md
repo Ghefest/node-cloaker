@@ -9,6 +9,11 @@
 3. ```bash
    git clone https://github.com/Ghefest/node-cloaker.git
    ```
+
+   ```bash
+   cd node-cloaker
+   ```
+
 4. Install dependencies:
 
    ```bash

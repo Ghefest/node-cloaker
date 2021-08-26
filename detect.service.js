@@ -67,7 +67,7 @@ module.exports = class DetectService {
     // console.log('UserAgent:', this.useragent);
 
     const isWhite = this.isWhite();
-    console.log('Redirect to white?:', isWhite);
+    console.log('Redirect to white?:', isWhite, '\n');
 
     isWhite ? (req.url = `/white/${req.url}`) : (req.url = `/black/${req.url}`);
 

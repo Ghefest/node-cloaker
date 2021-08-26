@@ -56,12 +56,12 @@ module.exports = class DetectService {
   }
 
   isWhite() {
-    return (
-      this.checkIsFacebook() &&
-      this.checkIsBot() &&
-      !this.validatePlatform() &&
-      !this.validateCountries()
-    );
+    return [
+      this.checkIsFacebook(),
+      this.checkIsBot(),
+      !this.validatePlatform(),
+      !this.validateCountries(),
+    ].every(condition => !!condition);
   }
 
   redirectFlow(req, res, next) {

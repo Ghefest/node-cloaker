@@ -7,7 +7,7 @@
    cd /var/www/
    ```
 3. ```bash
-    git clone https://github.com/Ghefest/node-cloaker.git
+   git clone https://github.com/Ghefest/node-cloaker.git
    ```
 4. Install dependencies:
 

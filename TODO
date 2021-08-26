@@ -2,7 +2,9 @@
 Todo:
   ✔ Platform white list @started(21-08-26 02:42) @done(21-08-26 02:54) @lasted(12m43s)
   ✔ Country white list @done(21-08-26 02:05)
-  ☐ UserAgent validator (facebook,Facebot,curl,gce-spider,yandex.com/bots,OdklBot)
+  ☐ UserAgent validator (facebook,Facebot,curl,gce-spider,yandex.com/bots,OdklBot):
+    ✔ check isBot @done(21-08-26 03:14)
+    ✔ check isFacebook @done(21-08-26 03:14)
   ☐ ISP validator (facebook,google,yandex,amazon,azure,digitalocean,microsoft, REG.RU)
   ☐ Redirect to white if referer not exist
   ☐ IP validator (https://klobase.nppr.team/)

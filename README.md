@@ -10,21 +10,20 @@
     git clone https://github.com/Ghefest/node-cloaker.git
    ```
 4. Install dependencies
-   ⋅⋅ ```bash
+
+   ```bash
    npm i
-
-   ```
-
    ```
 
 5. Configure .env file
 6. Upload your static file to black & white folders
 
 7. Install PM2 and start project
-   ⋅⋅ ```bash
+   ```bash
    npm install pm2@latest -g
+   ```
 
 ````
-⋅⋅ ```bash
+ ```bash
  pm2 start server.js
 ````

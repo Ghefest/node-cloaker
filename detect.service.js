@@ -11,13 +11,13 @@ module.exports = class DetectService {
   }
 
   checkIsFacebook() {
-    console.log(this.useragent.isFacebook);
+    console.log('isFacebook:', this.useragent.isFacebook);
 
     return this.useragent.isFacebook;
   }
 
   checkIsBot() {
-    console.log(this.useragent.isBot);
+    console.log('isBot:', this.useragent.isBot);
 
     return this.useragent.isBot;
   }

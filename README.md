@@ -1,6 +1,6 @@
 # Node Cloaker 😢 Alpha version 🤥
 
-## Deploy
+## Deploy 🐳 | Usage 🛠
 
 1. Install NodeJS ([Manual installing via package manager](https://nodejs.org/en/download/package-manager/))
 2. ```bash

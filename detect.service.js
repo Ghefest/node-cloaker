@@ -10,6 +10,10 @@ module.exports = class DetectService {
     this.whiteListPlatforms = process.env.WHITE_LIST_PLATFORMS.split(',');
   }
 
+  checkIsFacebook() {
+    return this.useragent.isFacebook;
+  }
+
   checkIsBot() {
     return this.useragent.isBot;
   }
@@ -46,12 +50,11 @@ module.exports = class DetectService {
   }
 
   isWhite() {
-    console.log(this.useragent.geoIp);
-
     return (
       !this.validateCountries() &&
       !this.validatePlatform() &&
-      !this.checkIsBot()
+      !this.checkIsBot() &&
+      !this.checkIsFacebook()
     );
   }
 

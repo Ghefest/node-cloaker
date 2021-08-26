@@ -64,7 +64,7 @@ module.exports = class DetectService {
     this.useragent = req.useragent;
 
     console.log('Referer:', this.referer);
-    console.log('UserAgent:', this.useragent);
+    // console.log('UserAgent:', this.useragent);
 
     const isWhite = this.isWhite();
     console.log('Redirect to white?:', isWhite);
